@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'manejador_de_adendas',
     'manejador_de_pacientes',
-    'manejador_de_personal_medico',
     'manejador_de_registros_de_historias_clinicas',
+    'manejador_de_usuarios'
 ]
 
 MIDDLEWARE = [
