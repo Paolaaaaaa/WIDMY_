@@ -1,20 +1,21 @@
 
 from ..models import Adenda
 from ..models import Registro
-from manejador_de_personal_medico.models import Personal_medico
+from manejador_de_usuarios.models import Medico 
+from manejador_de_usuarios.models import Enfermero 
 
-
-def create_registro(adenda):
-    reg_nuevo = Adenda(
+def create_adenda(adenda):
+    adenda_nuevo = Adenda(
         fecha = adenda['fecha'],
         tema = adenda['tema'],
         descripcion = adenda['descripcion'],
-        autor = Personal_medico.objects.get(pk= adenda['autor']),
-        registro = Registro.objects.get(pk= adenda["registro"])
+        autor_medico = Medico.objects.get(pk= adenda['autor_medico']),
+        registro = Registro.objects.get(pk= adenda["registro"]),
+        autor_enfermero = Enfermero.objects.get(pk=adenda["autor_enfermero"])
 
     )
-    reg_nuevo.save()
-    return reg_nuevo
+    adenda_nuevo.save()
+    return adenda_nuevo
 
 # Registro por pk
 def get_adenda(pk_):
