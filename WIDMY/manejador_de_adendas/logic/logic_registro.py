@@ -1,5 +1,5 @@
 from..models import Registro
-from manejador_de_registros_de_historias_clinicas import Historia_clinica
+from manejador_de_registros_de_historias_clinicas.models import Historia_clinica
 #crear un registro
 
 def create_registro(registro):
