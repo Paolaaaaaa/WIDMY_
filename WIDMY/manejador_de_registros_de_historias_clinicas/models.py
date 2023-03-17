@@ -7,3 +7,5 @@ class Historia_clinica(models.Model):
     id_historia_clinica=models.BigIntegerField()
     paciente = models.ForeignKey(Paciente, default=None, on_delete=models.CASCADE)
     autor = models.ForeignKey(Medico, default=None, on_delete=models.CASCADE)
+
+    #falta poner registros 

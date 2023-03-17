@@ -4,20 +4,21 @@ from django.db import models
 
 
 class Usuario(models.Model):
-    id_usuario = models.BigIntegerField()
-    def __str__(self) -> str:
-        return self.id_usuario
+    id_usuario = models.BigIntegerField(default=None)
+
+    class Meta:
+        abstract= True
+    def __str__(self) :
+        return '{} '.format(self.pk)
 
 
-class Medico (models.Model):
-    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+class Medico (Usuario):
     profesion = models.CharField(max_length=20)
     def __str__(self) -> str:
-        return self.usuario
+        return self.pk
     
 
-class Enfermero (models.Model):
-    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+class Enfermero (Usuario):
     profesion = models.CharField(max_length=20)
     def __str__(self) -> str:
-        return self.usuario
+        return self.pk
