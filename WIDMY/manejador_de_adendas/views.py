@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.core import serializers
 import json
 from django.views.decorators.csrf import csrf_exempt
-from logic import logic_adenda as la
-from logic import logic_registro as lr
+from .logic import logic_adenda as la
+from .logic import logic_registro as lr
 
 @csrf_exempt
 
