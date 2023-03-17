@@ -16,8 +16,9 @@ def adenda_view(request):
     
 
 def registro_view(request):
-    regitro_dto = lr.create_registro(json.load(request.body))
-    registro = lr.create_registro('json', [registro_dto])
-    return HttpResponse(registro,'application/json')    
+    if request.method =='POST':
+        registro_dto = lr.create_registro(json.load(request.body))
+        registro = lr.create_registro('json', [registro_dto])
+        return HttpResponse(registro,'application/json')    
 
 # Create your views here.
