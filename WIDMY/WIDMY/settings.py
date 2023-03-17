@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'historia_clinica',
-    'paciente',
-    'personal_medico',
-    'adenda',
+    'manejador_de_adendas',
+    'manejador_de_pacientes',
+    'manejador_de_personal_medico',
+    'manejador_de_registros_de_historias_clinicas',
 ]
 
 MIDDLEWARE = [
