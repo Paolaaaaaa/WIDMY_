@@ -4,7 +4,7 @@ from manejador_de_pacientes.models import Paciente
 
 def create_usuario(usuario):
     usuario_nuevo = Usuario(
-        id_usuario= Paciente.objects.get(pk=usuario["id_usuario"])
+        id_usuario= usuario["id_usuario"]
         
     )
     usuario_nuevo.save()
@@ -12,11 +12,10 @@ def create_usuario(usuario):
 
 
 
-
-def get_paciente(pk_):
+def get_usuario(pk_):
     usuario = Usuario.objects.get(pk=pk_)
     return usuario
 # todo registro
-def get_Pacientes():
+def get_usuarios():
     usuarios = Usuario.objects.all()
     return usuarios
