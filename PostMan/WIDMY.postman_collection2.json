@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "20e04c82-c339-4d99-92a4-1ebaa014f267",
+		"name": "WIDMY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19664490"
+	},
+	"item": [
+		{
+			"name": "WIDMY",
+			"item": [
+				{
+					"name": "Paciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_paciente\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/manejador_de_pacientes/paciente/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"manejador_de_pacientes",
+								"paciente",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_usuario\":1,\r\n    \"profesion\":\"Cardiologo\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/manejador_de_usuarios/medico/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"manejador_de_usuarios",
+								"medico",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREAR REGISTRO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/manejador_de_adendas/registro/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"manejador_de_adendas",
+								"registro",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREAR HISTORIA CLINICA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_historia_clinica\": 2,\n    \"paciente\": 3,\n    \"autor\": 2,\n    \"diagnostico\": \"Dolor de cabeza\",\n    \"tema\": \"Neurología\",\n    \"fecha\": \"2022-03-23\",\n    \"medicamento\": \"Ibuprofeno\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/manejador_de_registros_de_historias_clinicas/historia_clinica/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"manejador_de_registros_de_historias_clinicas",
+								"historia_clinica",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET HISTORIA CLINICA",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/manejador_de_registros_de_historias_clinicas/historia_clinica/2",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"manejador_de_registros_de_historias_clinicas",
+								"historia_clinica",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "127.0.0.1",
+			"type": "string"
+		},
+		{
+			"key": "port",
+			"value": "8000",
+			"type": "string"
+		}
+	]
+}
