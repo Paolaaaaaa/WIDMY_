@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,6 +23,7 @@ urlpatterns = [
     path('manejador_de_usuarios/', include('manejador_de_usuarios.urls')),
     path('manejador_de_registros_de_historias_clinicas/', include('manejador_de_registros_de_historias_clinicas.urls')),
     path('manejador_de_adendas/', include('manejador_de_adendas.urls')),
+    path('widmy-health-check/', views.healthCheck )
 
 
 ]
