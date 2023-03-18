@@ -14,3 +14,11 @@ def historia_clinica_view(request):
         hc = serializers.serialize('json',[hc_dto])
         return HttpResponse(hc,'application/json')    
     
+@csrf_exempt
+#GET ONE
+def historia_clinica_get_one(request, pk):
+    if request.method == 'GET':
+        hc = lhc.get_HU(pk)
+        hc = serializers.serialize('json',[hc,])
+        return HttpResponse(hc,'application/json')
+    

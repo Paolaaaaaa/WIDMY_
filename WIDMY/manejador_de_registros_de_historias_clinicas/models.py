@@ -8,6 +8,9 @@ class Historia_clinica(models.Model):
     id_historia_clinica=models.BigIntegerField()
     paciente = models.ForeignKey(Paciente, default=None, on_delete=models.CASCADE)
     autor = models.ForeignKey(Medico, default=None, on_delete=models.CASCADE)
-    registros = models.ForeignKey(Registro, default=None, on_delete=models.CASCADE)
-
+    registros = models.ForeignKey(Registro, default=None, on_delete=models.CASCADE, null=True)
+    diagnostico = models.CharField(max_length=100, default=None)
+    tema = models.CharField(max_length=100, default=None)
+    fecha = models.CharField(max_length=100,default=None)
+    medicamento = models.CharField(max_length=100, default=None)
     #falta poner registros 
