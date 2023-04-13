@@ -5,15 +5,24 @@ from manejador_de_usuarios.models import Medico
 from manejador_de_usuarios.models import Enfermero 
 
 def create_adenda(adenda):
-    adenda_nuevo = Adenda(
-        fecha = adenda['fecha'],
-        tema = adenda['tema'],
-        descripcion = adenda['descripcion'],
-        autor_medico = Medico.objects.get(pk= adenda['autor_medico']),
-        registro = Registro.objects.get(pk= adenda["registro"]),
-        autor_enfermero = Enfermero.objects.get(pk=adenda["autor_enfermero"])
 
-    )
+    if(adenda["autor_enfermero"]== "null"):
+        adenda_nuevo = Adenda(
+            tema = adenda['tema'],
+            descripcion = adenda['descripcion'],
+            autor_medico = Medico.objects.get(pk= adenda['autor_medico']),
+            registros = Registro.objects.get(pk= adenda["registro"]),
+
+        )
+    else:
+        adenda_nuevo = Adenda(
+            tema = adenda['tema'],
+            descripcion = adenda['descripcion'],
+            autor_enfermero = Enfermero.objects.get(pk= adenda['autor_enfermero']),
+            registros = Registro.objects.get(pk= adenda["registro"]),
+
+        )
+
     adenda_nuevo.save()
     return adenda_nuevo
 

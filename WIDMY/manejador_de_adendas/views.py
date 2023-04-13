@@ -10,15 +10,16 @@ from .logic import logic_registro as lr
 
 def adenda_view(request):
     if request.method == 'POST':
-        adenda_dto = la.create_adenda(json.loads(request.body))
+        adenda_dto = la.create_adenda(json.loads(request.body.decode('utf-8')))
         adenda = serializers.serialize('json',[adenda_dto])
         return HttpResponse(adenda,'application/json')    
     
+@csrf_exempt
 
 def registro_view(request):
     if request.method =='POST':
-        registro_dto = lr.create_registro(json.load(request.body))
-        registro = lr.create_registro('json', [registro_dto])
+        registro_dto = lr.create_registro(json.loads(request.body))
+        registro = serializers.serialize('json', [registro_dto])
         return HttpResponse(registro,'application/json')    
 
 # Create your views here.

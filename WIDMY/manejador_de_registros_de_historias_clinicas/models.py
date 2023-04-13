@@ -8,7 +8,7 @@ class Historia_clinica(models.Model):
     paciente = models.ForeignKey(Paciente, default=None, on_delete=models.CASCADE)
     diagnostico = models.CharField(max_length=100, default=None)
     tema = models.CharField(max_length=100, default=None)
-    fecha = models.DateField(default=None)
+    fecha = models.DateTimeField(auto_now_add=True)
     medicamento = models.CharField(max_length=100, default=None)
     autor_medico = models.ForeignKey(Medico, default=None,on_delete=models.SET_DEFAULT)
 

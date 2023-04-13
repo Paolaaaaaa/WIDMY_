@@ -4,11 +4,9 @@ from manejador_de_registros_de_historias_clinicas.models import Historia_clinica
 
 def create_registro(registro):
     reg_nuevo = Registro(
-        fecha = registro['fecha'],
         tema = registro['tema'],
         diagnostico = registro['diagnostico'],
-        historia_clinica = Historia_clinica.objects.get(pk= registro["historia_clinica"])
-
+        historia_clinica = Historia_clinica.objects.get(pk=registro["historia_clinica"])
     )
     reg_nuevo.save()
     return reg_nuevo

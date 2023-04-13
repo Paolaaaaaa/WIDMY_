@@ -11,18 +11,18 @@ class Registro(models.Model):
     diagnostico=models.CharField(max_length=50)
     historia_clinica = models.ForeignKey(Historia_clinica, default= None, on_delete=models.CASCADE)
 
-    def __str__(self) -> str:
-        return '{}'.format(self.fecha,self.tema, self.diagnostico, self.historia_clinica)
+    def __str__(self) -> str:        return '{}'.format(self.fecha,self.tema, self.diagnostico)
+
 
 class Adenda(models.Model):
     fecha = models.DateField(auto_now_add=True)
     tema= models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
-    autor_medico = models.ForeignKey(Medico, default=None,on_delete=models.SET_DEFAULT)
-    autor_enfermero = models.ForeignKey(Enfermero, default=None, on_delete=models.SET_DEFAULT)
+    autor_medico = models.ForeignKey(Medico, default=None,on_delete=models.SET_DEFAULT, blank= True, null= True)
+    autor_enfermero = models.ForeignKey(Enfermero, default=None, on_delete=models.SET_DEFAULT, blank= True,null= True)
     registros = models.ForeignKey(Registro, default= None, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return '{}'.format(self.fecha,self.tema, self.descripcion, self.autor, self.registro)
+        return '{}'.format(self.fecha,self.tema, self.descripcion, self.autor)
 
 

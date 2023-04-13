@@ -7,16 +7,18 @@ def create_historia_clinica(hu):
     hc_nuevo = Historia_clinica(
         id_historia_clinica= hu['id_historia_clinica'],
         paciente = Paciente.objects.get(pk = hu["paciente"]),
-        autor = Medico.objects.get(pk = hu['autor']),
+        autor_medico = Medico.objects.get(pk = hu['autor']),
         diagnostico = hu["diagnostico"],
         tema = hu["tema"],
-        fecha = hu["fecha"],
-        medicamento = hu["medicamento"],
+        medicamento = hu["medicamento"]
     )
     hc_nuevo.save()
     return hc_nuevo
 
 
+#def put_registro(reg,pk_hc):
+#    hu = Historia_clinica.objects.get(pk=pk_hc)
+#    reg.historia_clinica    
 
 
 def get_HU(pk_):
