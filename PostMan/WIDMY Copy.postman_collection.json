@@ -141,53 +141,6 @@
 					"response": []
 				},
 				{
-					"name": "GET HISTORIA CLINICA",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var data = JSON.parse(responseBody);\r",
-									"\r",
-									"tests[\"no genera error en el Post\"] = responseCode.code === 200;\r",
-									"console.log(data.id);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://{{host}}:{{port}}/manejador_de_registros_de_historias_clinicas/historia_clinica/{{new_id_a}}",
-							"protocol": "http",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"manejador_de_registros_de_historias_clinicas",
-								"historia_clinica",
-								"{{new_id_a}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Create Registro",
 					"request": {
 						"method": "POST",
@@ -224,7 +177,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"tema\": \"Primera Terapia muscular\",\r\n        \"descripcion\": \"Mejora en el musculo x \",\r\n        \"autor_medico\": 3,\r\n        \"registro\":2,\r\n        \"autor_enfermero\":\"null\"\r\n}",
+							"raw": "{\r\n        \"tema\": \"Primera Terapia muscular\",\r\n        \"descripcion\": \"Mejora en el musculo x \",\r\n        \"autor_medico\": 1,\r\n        \"registro\":2,\r\n        \"autor_enfermero\":\"null\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -248,6 +201,53 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "GET HISTORIA CLINICA",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;\r",
+							"console.log(data.pk);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/manejador_de_registros_de_historias_clinicas/historia_clinica/1",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"manejador_de_registros_de_historias_clinicas",
+						"historia_clinica",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -273,17 +273,17 @@
 	"variable": [
 		{
 			"key": "host",
-			"value": "localhost",
+			"value": "35.186.200.246",
 			"type": "string"
 		},
 		{
 			"key": "port",
-			"value": "8000",
+			"value": "80",
 			"type": "string"
 		},
 		{
 			"key": "new_id_p_",
-			"value": "",
+			"value": "1",
 			"type": "default"
 		},
 		{
