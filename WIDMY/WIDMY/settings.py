@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-z^l%em=o&#78bfwhbq$k2r11s%*xe**qk5r+o)w38@euw5k=l=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,9 +79,13 @@ WSGI_APPLICATION = 'WIDMY.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'widmy_db',   
+        'USER': 'user_db', 
+        'PASSWORD': 'isis2503',
+        'HOST': '10.128.0.4',         
+        'PORT': '5432',       
+        }
 }
 
 
