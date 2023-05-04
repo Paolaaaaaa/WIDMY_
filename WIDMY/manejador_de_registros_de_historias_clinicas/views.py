@@ -4,7 +4,6 @@ from django.core import serializers
 import json
 from django.views.decorators.csrf import csrf_exempt
 from .logic import logic_historia_clinica as lhc
-from manejador_de_adendas.logic import logic_registro as lr
 
 
 @csrf_exempt
@@ -27,8 +26,6 @@ def historia_clinica_get_one(request, pk):
 
 def historia_clinica_registro_create(request, pk):
     if request.method =='POST':
-        reg_dto = lr.create_registro(json.loads(request.body))
-        hu_ret = lr.put_registro(reg_dto,pk)
         hu_ret =serializers.serialize('json',[hu_ret])
         return HttpResponse(hu_ret,'application/json')
 

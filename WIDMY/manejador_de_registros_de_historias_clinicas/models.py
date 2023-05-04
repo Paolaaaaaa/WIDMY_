@@ -4,7 +4,6 @@ from manejador_de_usuarios.models import Medico
 
 # Create your models here.
 class Historia_clinica(models.Model):
-    id_historia_clinica=models.BigIntegerField()
     paciente = models.ForeignKey(Paciente, default=None, on_delete=models.CASCADE)
     diagnostico = models.CharField(max_length=100, default=None)
     tema = models.CharField(max_length=100, default=None)
