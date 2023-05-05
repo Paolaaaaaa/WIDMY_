@@ -9,12 +9,11 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -40,7 +39,8 @@ INSTALLED_APPS = [
     'manejador_de_adendas',
     'manejador_de_pacientes',
     'manejador_de_registros_de_historias_clinicas',
-    'manejador_de_usuarios'
+    'manejador_de_usuarios',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'WIDMY.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'widmy_db',   
@@ -86,15 +86,15 @@ WSGI_APPLICATION = 'WIDMY.wsgi.application'
         'HOST': '10.128.0.4',         
         'PORT': '5432',       
         }
-}"""
+}
 
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+}"""
 
 
 # Password validation
@@ -139,3 +139,22 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "https://isis2503-paolaaaaaa.auth0.com/v2/logout?returnTo=http%3A%2F%2F34.121.141.27:8080"
+
+SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'isis2503-paolaaaaaa.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'xbtwXF83yGz5XvR3LPNHSzBQAsg9y5cd'
+SOCIAL_AUTH_AUTH0_SECRET = 'z5wAjesEhzEuTuc0e4QtQxdbSuFIPES5HLnqdYXhIQrh1escmHoOaV7WFuRb_Raw'
+
+SOCIAL_AUTH_AUTH0_SCOPE = [
+'openid',
+'profile',
+'email',
+'role',
+]
+
+AUTHENTICATION_BACKENDS = {
+ 'WIDMY.auth0backend.Auth0',
+ 'django.contrib.auth.backends.ModelBackend', }
