@@ -13,18 +13,22 @@ from .forms import AdendaForm
 from django.urls import reverse
 from django.shortcuts import render
 
-
-@login_required
 @csrf_exempt
+@login_required
 def adenda_view(request):
+    print("este es el request: ")
     role = getRole(request)
+    print("este es el rol: ")
+    print(role)
     if role == "Doctor" or role =="Enfermero":
         if request.method == 'POST':
             form = AdendaForm(request.POST)
             if form.is_valid():
-                la.create_adenda(form)
+                adenda_dto = la.create_adenda(form)
+                adenda_dto = serializers.serialize('json',[adenda_dto])
+                print("Adenda creada")
                 messages.add_message(request, messages.SUCCES, 'Se ha creado la adenda correctamente' )
-                return HttpResponse(reverse('adendaCreate')) 
+                return HttpResponse(adenda_dto,'application/json') 
             else:
                 print(form.errors)
         else:
@@ -33,6 +37,7 @@ def adenda_view(request):
             'form':form,
         }
         return render(request, 'Adenda/AdendaCreate.html', context)
+
     else:
         return HttpResponse("Unauthorized User")    
 
