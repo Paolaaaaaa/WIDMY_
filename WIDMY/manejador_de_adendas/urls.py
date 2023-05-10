@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 urlpatterns = [
-    path('adenda/',views.adenda_view, name='Adenda_view'),
+    path('manejador_de_adendas/',views.adenda_view, name='Adenda_view'),
     path('ips/', views.ips_view, name='ips_view'),
     path ('service/', views.servicio_views, name='servicio_view')
 ]

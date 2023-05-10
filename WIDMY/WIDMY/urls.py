@@ -19,10 +19,11 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index),
     path('manejador_de_pacientes/', include('manejador_de_pacientes.urls')),
     path('manejador_de_usuarios/', include('manejador_de_usuarios.urls')),
     path('manejador_de_registros_de_historias_clinicas/', include('manejador_de_registros_de_historias_clinicas.urls')),
-    path('manejador_de_adendas/', include('manejador_de_adendas.urls')),
+    path('', include('manejador_de_adendas.urls')),
     path('widmy-health-check/', views.healthCheck ),
     path(r'', include('django.contrib.auth.urls')),
     path(r'', include('social_django.urls'))

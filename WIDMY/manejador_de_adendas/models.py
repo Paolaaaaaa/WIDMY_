@@ -30,7 +30,7 @@ class Adenda(models.Model):
     autor_enfermero = models.ForeignKey(Enfermero, default=None, on_delete=models.SET_DEFAULT, blank= True,null= True)
     servicio = models.ForeignKey(Servicio, default=None, blank=True, on_delete=models.CASCADE)
     def __str__(self) -> str:
-        return '{}'.format(self.fecha,self.tema, self.descripcion, self.diagnostico)
+        return '{}'.format(self.tema, self.descripcion, self.diagnostico, self.autor_enfermero, self.autor_medico, self.servicio, self.historia_clinica)
     
 
 

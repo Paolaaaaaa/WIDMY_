@@ -13,6 +13,6 @@ class Historia_clinica(models.Model):
 
 
     def __str__(self) -> str:
-        return '{}'.format(self.id_historia_clinica,self.diagnostico, self.tema, self.fecha,self.medicamento)
+        return '{}'.format(self.diagnostico, self.tema, self.fecha,self.medicamento)
 
     #falta poner registros 
