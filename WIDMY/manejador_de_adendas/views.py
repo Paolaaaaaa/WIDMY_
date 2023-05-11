@@ -11,7 +11,7 @@ from WIDMY.auth0backend import getRole
 from django.contrib import messages
 from .forms import AdendaForm
 from django.urls import reverse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 @csrf_exempt
 @login_required
@@ -28,7 +28,7 @@ def adenda_view(request):
                 adenda_dto = serializers.serialize('json',[adenda_dto])
                 print("Adenda creada")
                 messages.add_message(request, messages.SUCCESS, 'Se ha creado la adenda correctamente' )
-                return HttpResponse(adenda_dto,'application/json') 
+                return  redirect('/manejador_de_adendas/')
             else:
                 print(form.errors)
         else:

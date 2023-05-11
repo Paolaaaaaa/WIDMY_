@@ -22,8 +22,17 @@ def historia_clinica_get_one(request, pk):
         hc = serializers.serialize('json',[hc,])
         return HttpResponse(hc,'application/json')
 
-@csrf_exempt
 
+
+@csrf_exempt
+def historias_clinicas_list(request):
+    hus = lhc.get_HUs()
+    context = {
+        'historias_clinicas_list': hus
+    }
+    return render(request, 'Historia_Clinica/historias_clinica.html', context)
+
+@csrf_exempt
 def historia_clinica_registro_create(request, pk):
     if request.method =='POST':
         hu_ret =serializers.serialize('json',[hu_ret])
