@@ -21,7 +21,7 @@ class Servicio(models.Model):
              return '{}'.format(self.descripcion,self.nombre,self.ips_doctor, self.ips)   
 
 class Adenda(models.Model):
-    historia_clinica = models.OneToOneField(Historia_clinica, default= None, on_delete=models.CASCADE, primary_key=True)
+    historia_clinica = models.ForeignKey(Historia_clinica, default= -1, on_delete=models.SET_DEFAULT)
     diagnostico=models.CharField(max_length=50, default=None)
     fecha = models.DateField(auto_now_add=True)
     tema= models.CharField(max_length=50)

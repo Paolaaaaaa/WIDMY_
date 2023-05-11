@@ -10,8 +10,8 @@ class AdendaForm(forms.ModelForm):
             'diagnostico',
             'tema',
             'descripcion',
-            'autor_medico',
-            'autor_enfermero',
+            #'autor_medico',
+            #'autor_enfermero',
             'servicio'
 
         ]
@@ -20,7 +20,7 @@ class AdendaForm(forms.ModelForm):
             'diagnostico': 'Diagnostico',
             'tema':'Tema',
             'descripcion':'Descripcion',
-            'autor_medico':'Autor Medico',
-            'autor_enfermero':'Autor Enfermero',
+            #'autor_medico':'Autor Medico',
+            #'autor_enfermero':'Autor Enfermero',
             'servicio':'Servicio'
         }

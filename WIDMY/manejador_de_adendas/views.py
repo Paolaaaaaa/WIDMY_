@@ -27,7 +27,7 @@ def adenda_view(request):
                 adenda_dto = la.create_adenda(form)
                 adenda_dto = serializers.serialize('json',[adenda_dto])
                 print("Adenda creada")
-                messages.add_message(request, messages.SUCCES, 'Se ha creado la adenda correctamente' )
+                messages.add_message(request, messages.SUCCESS, 'Se ha creado la adenda correctamente' )
                 return HttpResponse(adenda_dto,'application/json') 
             else:
                 print(form.errors)
