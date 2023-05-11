@@ -26,5 +26,7 @@ urlpatterns = [
     path('', include('manejador_de_adendas.urls')),
     path('widmy-health-check/', views.healthCheck ),
     path(r'', include('django.contrib.auth.urls')),
-    path(r'', include('social_django.urls'))
+    path(r'', include('social_django.urls')),
+    path('api-auth/', include('rest_framework.urls'))
+
 ]

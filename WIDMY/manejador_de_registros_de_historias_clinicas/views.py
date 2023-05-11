@@ -4,7 +4,11 @@ from django.core import serializers
 import json
 from django.views.decorators.csrf import csrf_exempt
 from .logic import logic_historia_clinica as lhc
-
+from rest_framework import mixins
+from rest_framework import viewsets
+from rest_framework.throttling import UserRateThrottle
+from rest_framework.views import APIView
+from rest_framework.decorators import action,throttle_classes,api_view
 
 @csrf_exempt
 
@@ -22,14 +26,16 @@ def historia_clinica_get_one(request, pk):
         hc = serializers.serialize('json',[hc,])
         return HttpResponse(hc,'application/json')
 
+class OncePerDayUserThrottle(UserRateThrottle):
+    rate = '10/minute'
 
-
-@csrf_exempt
+@api_view(['GET'])
+@throttle_classes([OncePerDayUserThrottle])
 def historias_clinicas_list(request):
     hus = lhc.get_HUs()
     context = {
-        'historias_clinicas_list': hus
-    }
+            'historias_clinicas_list': hus
+        }
     return render(request, 'Historia_Clinica/historias_clinica.html', context)
 
 @csrf_exempt

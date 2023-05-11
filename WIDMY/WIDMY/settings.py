@@ -29,10 +29,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '4/minute',
+        'user': '10/minute'
+    }
+}
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +53,9 @@ INSTALLED_APPS = [
     'manejador_de_pacientes',
     'manejador_de_registros_de_historias_clinicas',
     'manejador_de_usuarios',
-    'social_django'
+    'social_django',
+
+
 ]
 
 MIDDLEWARE = [
@@ -160,3 +172,9 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 AUTHENTICATION_BACKENDS = {
  'WIDMY.auth0backend.Auth0',
  'django.contrib.auth.backends.ModelBackend', }
+
+
+
+
+
+
