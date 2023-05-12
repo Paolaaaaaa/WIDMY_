@@ -57,3 +57,12 @@ def servicio_views (request):
         service_dto = ls.create_servicio(json.loads(request.body.decode('utf-8')))
         service_dto = serializers.serialize('json',[service_dto])
         return HttpResponse (service_dto, 'application/json')
+
+@csrf_exempt
+def get_adenda (request):
+    if request.method == 'GET':
+        hus = la.get_adendas()
+        context = {
+            'adendas_list': hus
+        }
+        return render(request, 'Adenda/adendas.html', context)

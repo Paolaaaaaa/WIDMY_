@@ -54,8 +54,6 @@ INSTALLED_APPS = [
     'manejador_de_registros_de_historias_clinicas',
     'manejador_de_usuarios',
     'social_django',
-
-
 ]
 
 MIDDLEWARE = [

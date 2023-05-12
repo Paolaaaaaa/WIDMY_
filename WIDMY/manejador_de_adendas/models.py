@@ -2,7 +2,7 @@ from django.db import models
 from manejador_de_usuarios.models import Medico 
 from manejador_de_usuarios.models import Enfermero 
 from manejador_de_registros_de_historias_clinicas.models import Historia_clinica
-
+from django_cryptography.fields import encrypt
 # Create your models here.
 
 class Ips(models.Model):
@@ -22,7 +22,8 @@ class Servicio(models.Model):
 
 class Adenda(models.Model):
     historia_clinica = models.ForeignKey(Historia_clinica, default= -1, on_delete=models.SET_DEFAULT)
-    diagnostico=models.CharField(max_length=50, default=None)
+    #diagnostico = models.CharField(max_length=50, default=None)
+    diagnostico = encrypt(models.CharField(max_length=50, default=None))
     fecha = models.DateField(auto_now_add=True)
     tema= models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)# comentarios 
