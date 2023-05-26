@@ -172,3 +172,4 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+PATH_PACIENTES = "http://localhost:8080/paciente/list/"

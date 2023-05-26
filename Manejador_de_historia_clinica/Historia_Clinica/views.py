@@ -12,14 +12,29 @@ from rest_framework import viewsets
 from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
 from rest_framework.decorators import action,throttle_classes,api_view
+from django.conf import settings
+import requests
+
+def check_paciente(data):
+    pacientes = requests.get(settings.PATH_PACIENTES, headers={"Accept":"application/json"})
+    pacientess = pacientes.json()
+    for paciente in pacientess:
+        if data["paciente"] == paciente["id"]:
+            return True
+    return False
+
+
 
 @csrf_exempt
-
 def historia_clinica_view(request):
     if request.method == 'POST':
-        hc_dto = lhc.create_historia_clinica(json.loads(request.body))
-        hc = serializers.serialize('json',[hc_dto])
-        return HttpResponse(hc,'application/json')    
+        data = requests.body.decode('utf-8')
+        data_json = json.loads(data)
+        if check_paciente(data_json):
+
+            hc_dto = lhc.create_historia_clinica(json.loads(request.body))
+            hc = serializers.serialize('json',[hc_dto])
+            return HttpResponse(hc,'application/json')    
     
 @csrf_exempt
 #GET ONE

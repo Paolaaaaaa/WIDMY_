@@ -24,8 +24,9 @@ def paciente_view(request):
 
 
 @csrf_exempt
-def get_paciente (request):
+def get_pacientes(request):
     if request.method == 'GET':
-        hus = lp.get_Pacientes
+        pacientes = lp.get_Pacientes()
+        variables = serializers.serialize('json', pacientes)
+        return HttpResponse(variables, 'application/json')
      
-        return HttpResponse (hus, 'application/json')
