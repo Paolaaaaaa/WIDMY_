@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Manejador_de_usuarios.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WIDMY.settings')
 
 application = get_wsgi_application()

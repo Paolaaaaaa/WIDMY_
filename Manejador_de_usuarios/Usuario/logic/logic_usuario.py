@@ -1,5 +1,4 @@
 from ..models import Usuario
-from manejador_de_pacientes.models import Paciente
 
 
 def create_usuario(usuario):
