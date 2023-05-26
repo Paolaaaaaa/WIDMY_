@@ -15,14 +15,6 @@ def paciente_view(request):
         return HttpResponse(paciente,'application/json')    
     
 
-
-
-
-
-
-
-
-
 @csrf_exempt
 def get_pacientes(request):
     if request.method == 'GET':

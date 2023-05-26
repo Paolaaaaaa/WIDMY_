@@ -10,8 +10,8 @@ from django.db import models
 
 def create_historia_clinica(hu):
     hc_nuevo = Historia_clinica(
-        #paciente = Paciente.objects.get(pk = hu["paciente"]),
-        #autor_medico = Medico.objects.get(pk = hu['autor']),
+        paciente =  hu["paciente"],
+        autor_medico = hu['autor_medico'],
         diagnostico = hu["diagnostico"],
         tema = hu["tema"],
         medicamento = hu["medicamento"]

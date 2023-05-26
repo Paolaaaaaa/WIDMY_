@@ -172,4 +172,6 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
-PATH_PACIENTES = "http://localhost:8080/paciente/list/"
+PATH_PACIENTES = "http://localhost:8081/paciente/list/"
+PATH_MEDICO = "http://localhost:8082/medico/list/"
+PATH_ENFERMERO = "http://localhost:8082/enfermero/list/"

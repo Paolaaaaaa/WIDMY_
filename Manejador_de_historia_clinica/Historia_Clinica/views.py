@@ -19,22 +19,30 @@ def check_paciente(data):
     pacientes = requests.get(settings.PATH_PACIENTES, headers={"Accept":"application/json"})
     pacientess = pacientes.json()
     for paciente in pacientess:
-        if data["paciente"] == paciente["id"]:
+        if data["paciente"] == paciente["pk"]:
             return True
     return False
-
+def check_medico(data):
+    medicos = requests.get(settings.PATH_MEDICO, headers={"Accept":"application/json"})
+    medicoss = medicos.json()
+    for med in medicoss:
+        if data["autor_medico"] == med["pk"]:
+            return True
+    return False
 
 
 @csrf_exempt
 def historia_clinica_view(request):
     if request.method == 'POST':
-        data = requests.body.decode('utf-8')
+        data = request.body.decode('utf-8')
         data_json = json.loads(data)
-        if check_paciente(data_json):
-
+        if check_paciente(data_json) and check_medico(data_json):
             hc_dto = lhc.create_historia_clinica(json.loads(request.body))
             hc = serializers.serialize('json',[hc_dto])
-            return HttpResponse(hc,'application/json')    
+            return HttpResponse(hc,'application/json')
+        else:
+            return HttpResponse("unsuccessfully created historia clinica. medico o paciente does not exist")
+                
     
 @csrf_exempt
 #GET ONE
