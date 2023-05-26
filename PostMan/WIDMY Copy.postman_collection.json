@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8835e444-f2f4-4333-a45a-8d5e3e9a611b",
+		"_postman_id": "b69f9cfa-6291-4da5-94f9-9dcd42fe4c59",
 		"name": "WIDMY Copy",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27530546"
 	},
 	"item": [
 		{
@@ -37,15 +38,61 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{host}}:{{port}}/manejador_de_pacientes/paciente/",
+							"raw": "http://{{host}}:8081/paciente/",
 							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
-							"port": "{{port}}",
+							"port": "8081",
 							"path": [
-								"manejador_de_pacientes",
 								"paciente",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pacientes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"new_id_p\",data.pk);\r",
+									"tests[\"no genera error en el Post\"] = responseCode.code === 200;\r",
+									"console.log(data.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_paciente\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:8081/paciente/list/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8081",
+							"path": [
+								"paciente",
+								"list",
 								""
 							]
 						}
@@ -81,15 +128,61 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{host}}:{{port}}/manejador_de_usuarios/medico/",
+							"raw": "http://{{host}}:8082/medico/",
 							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
-							"port": "{{port}}",
+							"port": "8082",
 							"path": [
-								"manejador_de_usuarios",
 								"medico",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Medico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"new_id_p_\",data.pk);\r",
+									"tests[\"no genera error en el Post\"] = responseCode.code === 200;\r",
+									"console.log(data.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_usuario\":1,\r\n    \"profesion\":\"Cardiologo\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:8082/medico/list/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8082",
+							"path": [
+								"medico",
+								"list",
 								""
 							]
 						}
@@ -117,7 +210,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_historia_clinica\": 2,\n    \"paciente\": 7,\n    \"autor\": 4,\n    \"diagnostico\": \"Dolor de cabeza\",\n    \"tema\": \"Neurología\",\n    \"medicamento\": \"Ibuprofeno\"\n}",
+							"raw": "{\n\n    \"paciente\": 1,\n    \"autor_medico\": 1,\n    \"diagnostico\": \"Dolor de cabeza\",\n    \"tema\": \"Neurología\",\n    \"medicamento\": \"Ibuprofeno\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -125,14 +218,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{host}}:{{port}}/manejador_de_registros_de_historias_clinicas/historia_clinica/",
+							"raw": "http://{{host}}:{{port}}/historia_clinica/",
 							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
 							"port": "{{port}}",
 							"path": [
-								"manejador_de_registros_de_historias_clinicas",
 								"historia_clinica",
 								""
 							]
@@ -141,13 +233,30 @@
 					"response": []
 				},
 				{
-					"name": "Create Registro",
+					"name": "GET HISTORIA CLINICA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"new_id_a\",data.id);\r",
+									"tests[\"no genera error en el Post\"] = responseCode.code === 200;\r",
+									"console.log(data.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"tema\": \"terapias musculares\",\r\n        \"diagnostico\": \"atrofia muscular\",\r\n        \"historia_clinica\": 3\r\n}",
+							"raw": "{\n\n    \"paciente\": 1,\n    \"autor_medico\": 1,\n    \"diagnostico\": \"Dolor de cabeza\",\n    \"tema\": \"Neurología\",\n    \"medicamento\": \"Ibuprofeno\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -155,15 +264,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{host}}:{{port}}/manejador_de_adendas/registro/",
+							"raw": "http://{{host}}:{{port}}/historias_clinicas/",
 							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
 							"port": "{{port}}",
 							"path": [
-								"manejador_de_adendas",
-								"registro",
+								"historias_clinicas",
 								""
 							]
 						}
@@ -185,15 +293,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{host}}:{{port}}/manejador_de_adendas/adenda/",
+							"raw": "http://{{host}}:8083/manejador_de_adendas/",
 							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
-							"port": "{{port}}",
+							"port": "8083",
 							"path": [
 								"manejador_de_adendas",
-								"adenda",
 								""
 							]
 						}
@@ -234,16 +341,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{host}}:{{port}}/manejador_de_registros_de_historias_clinicas/historia_clinica/1",
+					"raw": "http://{{host}}:8083/adendas/",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
-					"port": "{{port}}",
+					"port": "8083",
 					"path": [
-						"manejador_de_registros_de_historias_clinicas",
-						"historia_clinica",
-						"1"
+						"adendas",
+						""
 					]
 				}
 			},
@@ -273,12 +379,12 @@
 	"variable": [
 		{
 			"key": "host",
-			"value": "35.186.200.246",
+			"value": "localhost",
 			"type": "string"
 		},
 		{
 			"key": "port",
-			"value": "80",
+			"value": "8080",
 			"type": "string"
 		},
 		{
