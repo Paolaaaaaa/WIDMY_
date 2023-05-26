@@ -1,7 +1,6 @@
 from django.db import models
 
 from ..models import Servicio,Ips
-from manejador_de_usuarios.models import Medico
 
 
 
@@ -9,7 +8,7 @@ def create_servicio(servicio):
     servicio_nuevo = Servicio.objects.create(
         descripcion = servicio['descripcion'],
         nombre = servicio['nombre'],
-        ips_doctor = Medico.objects.get(pk=servicio['ips_doctor']),
+        #ips_doctor = Medico.objects.get(pk=servicio['ips_doctor']),
         ips = Ips.objects.get(pk= servicio['ips'])
 
     )
