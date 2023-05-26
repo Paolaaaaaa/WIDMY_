@@ -12,6 +12,24 @@ from django.contrib import messages
 from .forms import AdendaForm
 from django.urls import reverse
 from django.shortcuts import render,redirect
+from django.conf import settings
+import requests
+
+def check_medico(data):
+    medicos = requests.get(settings.PATH_MEDICO, headers={"Accept":"application/json"})
+    medicoss = medicos.json()
+    for med in medicoss:
+        if data["autor_medico"] == med["pk"]:
+            return True
+    return False
+
+def check_enfermero(data):
+    enfermeros = requests.get(settings.PATH_ENFERMERO, headers={"Accept":"application/json"})
+    enfermeross = enfermeros.json()
+    for enf in enfermeross:
+        if data["autor_enfermero"] == enf["pk"]:
+            return True
+    return False
 
 @csrf_exempt
 @login_required
@@ -21,22 +39,26 @@ def adenda_view(request):
     print("este es el rol: ")
     print(role)
     if role == "Doctor" or role =="Enfermero":
-        if request.method == 'POST':
-            form = AdendaForm(request.POST)
-            if form.is_valid():
-                adenda_dto = la.create_adenda(form)
-                adenda_dto = serializers.serialize('json',[adenda_dto])
-                print("Adenda creada")
-                messages.add_message(request, messages.SUCCESS, 'Se ha creado la adenda correctamente' )
-                return  redirect('/manejador_de_adendas/')
+        if (role =="Doctor" and check_medico(request)) or (check_enfermero(requests) and role=="Enfermero"):
+            if request.method == 'POST':
+                form = AdendaForm(request.POST)
+                if form.is_valid():
+                    adenda_dto = la.create_adenda(form)
+                    adenda_dto = serializers.serialize('json',[adenda_dto])
+                    print("Adenda creada")
+                    messages.add_message(request, messages.SUCCESS, 'Se ha creado la adenda correctamente' )
+                    return  redirect('/manejador_de_adendas/')
+                else:
+                    print(form.errors)
             else:
-                print(form.errors)
+                form = AdendaForm()
+            context = {
+                'form':form,
+            }
+            return render(request, 'Adenda/AdendaCreate.html', context)
         else:
-            form = AdendaForm()
-        context = {
-            'form':form,
-        }
-        return render(request, 'Adenda/AdendaCreate.html', context)
+
+            return HttpResponse("Not existent enfermero or doctor")    
 
     else:
         return HttpResponse("Unauthorized User")    
