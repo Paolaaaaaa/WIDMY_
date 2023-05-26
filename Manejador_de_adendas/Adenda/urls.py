@@ -1,0 +1,12 @@
+from django.contrib import admin
+from django.urls import path
+from . import views
+from django.views.decorators.csrf import csrf_exempt
+
+
+urlpatterns = [
+    path('manejador_de_adendas/',views.adenda_view, name='Adenda_view'),
+    path('ips/', views.ips_view, name='ips_view'),
+    path ('service/', views.servicio_views, name='servicio_view'),
+    path('adendas/', views.get_adenda, name='get_adenda')
+]
