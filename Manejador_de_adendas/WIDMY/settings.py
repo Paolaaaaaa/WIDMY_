@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-u$)09#*hc=lfvfe7+=y4r2=(^qfpckc3v=c6d+pu5rt!m-=izs
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Application definition
@@ -38,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'adenda',
-     'social_django'
+     'social_django',
+     'rest_framework',
+
 ]
 
 MIDDLEWARE = [
