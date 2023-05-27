@@ -86,7 +86,7 @@ DATABASES = {
 """
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -94,7 +94,7 @@ DATABASES = {
     }
 }
 
-
+"""
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -170,3 +170,6 @@ STATICFILES_DIRS = (
 
 #PATH_VAR = "http://10.128.0.4:8080/variables/"
 #PATH_PLACES = "http://10.128.0.10:8080/places"
+
+
+MONGO_CLI = os.environ['MONGO_CLIENT']
