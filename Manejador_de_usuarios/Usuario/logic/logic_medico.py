@@ -1,6 +1,6 @@
 from ..models import Medico
 from ..models import Usuario
-
+"""
 def create_medico(medico):
 
     #usuario_nuevo = Usuario.objects.create(
@@ -21,4 +21,4 @@ def get_medico(pk_):
 
 def get_medicos():
     medicos = Medico.objects.all()
-    return medicos
+    return medicos"""

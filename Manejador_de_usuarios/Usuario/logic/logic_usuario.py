@@ -1,6 +1,5 @@
 from ..models import Usuario
-
-
+"""
 def create_usuario(usuario):
     usuario_nuevo = Usuario(
         id_usuario= usuario["id_usuario"]
@@ -18,3 +17,5 @@ def get_usuario(pk_):
 def get_usuarios():
     usuarios = Usuario.objects.all()
     return usuarios
+
+"""

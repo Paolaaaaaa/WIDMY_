@@ -1,7 +1,7 @@
 from ..models import Enfermero
 from ..models import Usuario
 
-def create_enfermero(enfermero):
+"""def create_enfermero(enfermero):
 
     #usuario_nuevo = Usuario.objects.create(
         #id_usuario= medico["id_usuario"])
@@ -21,4 +21,4 @@ def get_enfermero(pk_):
 
 def get_enfermeros():
     enfermeros = Enfermero.objects.all()
-    return enfermeros
+    return enfermeros"""
