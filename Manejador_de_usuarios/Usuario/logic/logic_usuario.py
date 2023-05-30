@@ -1,4 +1,4 @@
-from ..models import Usuario
+#from ..models import Usuario
 """
 def create_usuario(usuario):
     usuario_nuevo = Usuario(

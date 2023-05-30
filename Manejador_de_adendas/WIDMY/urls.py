@@ -20,7 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', views.index),
-    path('', include('adenda.urls')),
+    path('', include('Adenda.urls')),
     #path('widmy-health-check/', views.healthCheck ),
     path(r'', include('django.contrib.auth.urls')),
     path(r'', include('social_django.urls')),

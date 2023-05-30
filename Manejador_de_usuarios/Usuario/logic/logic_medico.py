@@ -1,5 +1,5 @@
-from ..models import Medico
-from ..models import Usuario
+#from ..models import Medico
+#from ..models import Usuario
 """
 def create_medico(medico):
 
