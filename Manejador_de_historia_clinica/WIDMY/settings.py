@@ -78,19 +78,20 @@ WSGI_APPLICATION = 'WIDMY.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-"""
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'historia_clinica_db',   
-        'USER': 'user_db', 
+        'NAME': 'historias_db',   
+        'USER': 'historias_user', 
         'PASSWORD': 'isis2503',
-        'HOST': '10.128.0.4',         
+        'HOST': '10.182.0.16',         
         'PORT': '5432',       
         }
 }
-"""
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -98,7 +99,7 @@ DATABASES = {
     }
 }
 
-
+"""
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
